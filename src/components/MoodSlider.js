@@ -1,6 +1,5 @@
 import React from 'react';
-import { Slider } from 'rsuite';
-import 'rsuite/dist/styles/rsuite-default.css'
+import './MoodSlider.css'
 
 class MoodSlider extends React.Component {
   constructor(props) {
@@ -10,33 +9,30 @@ class MoodSlider extends React.Component {
     };
   }
   render() {
-    const labels = ['Extreme Low', 'Mid Low', 'Low', 'Neutral', 'High', 'Mid High', 'Extreme High'];
-    const { value } = this.state;
-    const handleStyle = {
-      color: '#3498ff',
-      backgroundColor: "#f2f2f5",
-      fontSize: 12,
-      width: 64,
-      height: 32,
-      zIndex: 100
-    };
+    const labels = ['ExtremeLow', 'Mid Low', 'Low', 'Neutral', 'High', 'Mid High', 'Extreme High'];
 
     return (
-      <div >
-        <div style={{ width: 400, marginLeft: 20 }}>
-          <Slider
-            min={0}
-            max={labels.length - 1}
-            value={value}
-            className='mood-slider'
-            handleStyle={handleStyle}
-            graduated
-            tooltip={false}
-            handleTitle={labels[value]}
-            onChange={v => {
-              this.setState({ value: v });
-            }}
-          />
+      <div class='mood-slider'>
+        <div className="mood-segment" id="down-high">
+
+        </div>
+        <div className="mood-segment" id="down-mid">
+
+        </div>
+        <div className="mood-segment" id="down-low">
+
+        </div>
+        <div className="mood-segment" id="neutral">
+
+        </div>
+        <div className="mood-segment" id="up-low">
+
+        </div>
+        <div className="mood-segment" id="up-mid">
+
+        </div>
+        <div className="mood-segment"id="up-high">
+
         </div>
       </div>
     );

@@ -1,0 +1,35 @@
+.mood-segment {
+    width: 8vw;
+    height: 8vh;
+    border: 0.1vw solid rgba(255,255,255,0.5);
+    display: inline-block;
+    margin-left: -0.1vw;
+}
+
+#down-high {
+    background-color: #1b5490;
+}
+
+#down-mid {
+    background-color: #41687a;
+}
+
+#down-low {
+    background-color: #56746e;
+}
+
+#neutral {
+    background-color: #9cb04a;
+}
+
+#up-low {
+    background-color: #fae67d;
+}
+
+#up-mid {
+    background-color: #fdce5b;
+}
+
+#up-high {
+    background-color: #ffb83d;
+}
