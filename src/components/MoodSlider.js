@@ -9,31 +9,18 @@ class MoodSlider extends React.Component {
     };
   }
   render() {
-    const labels = ['ExtremeLow', 'Mid Low', 'Low', 'Neutral', 'High', 'Mid High', 'Extreme High'];
-
+    const { value } = this.state;
+    const labels = ['Extreme Low', 'Mid Low', 'Low', 'Neutral', 'High', 'Mid High', 'Extreme High'];
     return (
-      <div class='mood-slider'>
-        <div className="mood-segment" id="down-high">
-
+      <div className='mood-slider'>
+        <div className='mood-title'>Mood</div>
+        <div className='mood-slider-container'>
+          <input type='range' min='0' max={labels.length - 1} value={value} className='mood-slider-bar' id='myRange'  onChange={v => {
+              console.log(v.target.value)
+              this.setState({ value: v.target.value });
+              }}/>
         </div>
-        <div className="mood-segment" id="down-mid">
-
-        </div>
-        <div className="mood-segment" id="down-low">
-
-        </div>
-        <div className="mood-segment" id="neutral">
-
-        </div>
-        <div className="mood-segment" id="up-low">
-
-        </div>
-        <div className="mood-segment" id="up-mid">
-
-        </div>
-        <div className="mood-segment"id="up-high">
-
-        </div>
+        <div className='mood-label'>{labels[value]}</div>
       </div>
     );
   }
