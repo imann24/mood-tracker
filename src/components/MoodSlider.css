@@ -42,6 +42,10 @@
     border-bottom: 0.25em solid silver;
 }
 
+.mood-slider-bar:hover {
+    cursor: pointer;
+}
+
 /* Special styling for WebKit/Blink */
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
