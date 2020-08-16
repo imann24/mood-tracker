@@ -12,6 +12,7 @@ class MoodSlider extends React.Component {
       mood: labels[neutralIdx]
     };
   }
+
   render() {
     const { value } = this.state;
     return (
