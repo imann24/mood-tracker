@@ -24,12 +24,22 @@ class BubbleSlider extends React.Component {
     }
   }
 
+  selectBubble(index) {
+    this.setState((state) => {
+      return {selectedIdx: index}
+    });
+  }
+
   render() {
     const { bubbleCount, selectedIdx } = this.state;
     const bubbles = [];
     for (let i = 0; i < bubbleCount; i++) {
       const className = (i === selectedIdx) ? 'bubble-radio-button-fill' : 'bubble-radio-button';
-      bubbles.push(<div className={className} key={`bubble-button-${i}`} />)
+      bubbles.push(
+          <div className={className}
+               onClick={()=>{this.selectBubble(i)}}
+               key={`bubble-button-${i}`}
+               alt='select' />)
     }
 
     return (
