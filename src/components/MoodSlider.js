@@ -1,5 +1,6 @@
 import React from 'react';
 import './MoodSlider.css'
+import './Main.css'
 
 const labels = ['Very Low', 'Low', 'Somewhat Low', 'Neutral', 'Somewhat High', 'High', 'Very High'];
 
@@ -17,7 +18,7 @@ class MoodSlider extends React.Component {
     const { value } = this.state;
     return (
       <div className='mood-slider'>
-        <div className='mood-title'>Mood</div>
+        <div className='mood-title'><h1>Mood</h1></div>
         <div className='mood-slider-container'>
           <input type='range' min='0' max={labels.length - 1} value={value} className='mood-slider-bar' id='myRange'  onChange={v => {
               const idx = v.target.value;
