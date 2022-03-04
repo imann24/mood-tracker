@@ -1,37 +1,40 @@
 .mood-slider {
-    width: 100%;
+  width: 100%;
 }
 
 .mood-title {
-    background: silver;
-    width: 50vw;
-    margin-top: -1vh;
-    border-radius: 0.25em 0.25em 0 0;
-    color: white;
-    font-weight: 800;
-    font-size: 3em;
-    z-index: -1;
-    padding-left: 0.25em;
+  background: silver;
+  width: 50vw;
+  margin-top: -1vh;
+  border-radius: 0.25em 0.25em 0 0;
+  color: white;
+  z-index: -1;
+}
+
+.mood-title h1 {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  margin-bottom: 0;
 }
 
 .mood-slider-container {
-    width: 50vw;
-    background: silver;
+  width: 50vw;
+  background: silver;
 }
 
 .mood-slider-bar {
-    margin: auto;
-    -webkit-appearance: none;
-    width: 50vw;
-    height: 5vh;
-    background-image: linear-gradient(to right,
-        #1b5490,
-        #1b5490 20%,
-        #56746e 30%,
-        #9cb04a 50%, 
-        #fdce5b 70%,
-        #fdce5b 80%,
-        #ffb83d 90%);
+  margin: auto;
+  -webkit-appearance: none;
+  width: 50vw;
+  height: 5vh;
+  background-image: linear-gradient(to right,
+    #1b5490,
+    #1b5490 20%,
+    #56746e 30%,
+    #9cb04a 50%,
+    #fdce5b 70%,
+    #fdce5b 80%,
+    #ffb83d 90%);
     outline: none;
     -webkit-transition: opacity .15s ease-in-out;
     border-radius: 1em;
@@ -40,54 +43,54 @@
     border-right: 0.5em solid silver;
     border-top: 0.25em solid silver;
     border-bottom: 0.25em solid silver;
-}
+  }
 
-.mood-slider-bar:hover {
+  .mood-slider-bar:hover {
     cursor: pointer;
-}
+  }
 
-/* Special styling for WebKit/Blink */
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  height: 36px;
-  width: 16px;
-  background: transparent;
-  cursor: pointer;
-  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-  border-color: #ffffff transparent;
-  border-style: solid;
-  border-width: 40px 20px 0px 20px;
-  height: 0px;
-  width: 0px;
-}
+  /* Special styling for WebKit/Blink */
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 36px;
+    width: 16px;
+    background: transparent;
+    cursor: pointer;
+    margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+    border-color: #ffffff transparent;
+    border-style: solid;
+    border-width: 40px 20px 0px 20px;
+    height: 0px;
+    width: 0px;
+  }
 
-/* All the same stuff for Firefox */
-input[type=range]::-moz-range-thumb {
-  height: 36px;
-  width: 16px;
-  background: #ffffff;
-  cursor: pointer;
-  border-color: #ffffff transparent;
-  border-style: solid;
-  border-width: 40px 20px 0px 20px;
-  height: 0px;
-  width: 0px;
-}
+  /* All the same stuff for Firefox */
+  input[type=range]::-moz-range-thumb {
+    height: 36px;
+    width: 16px;
+    background: #ffffff;
+    cursor: pointer;
+    border-color: #ffffff transparent;
+    border-style: solid;
+    border-width: 40px 20px 0px 20px;
+    height: 0px;
+    width: 0px;
+  }
 
-/* All the same stuff for IE */
-input[type=range]::-ms-thumb {
-  height: 36px;
-  width: 16px;
-  background: #ffffff;
-  cursor: pointer;
-  border-color: #ffffff transparent;
-  border-style: solid;
-  border-width: 40px 20px 0px 20px;
-  height: 0px;
-  width: 0px;
-}
+  /* All the same stuff for IE */
+  input[type=range]::-ms-thumb {
+    height: 36px;
+    width: 16px;
+    background: #ffffff;
+    cursor: pointer;
+    border-color: #ffffff transparent;
+    border-style: solid;
+    border-width: 40px 20px 0px 20px;
+    height: 0px;
+    width: 0px;
+  }
 
-.mood-label {
+  .mood-label {
     background: silver;
     width: 50vw;
     margin-top: -1vh;
@@ -96,4 +99,4 @@ input[type=range]::-ms-thumb {
     text-align: center;
     font-weight: 500;
     padding: 0.5em;
-}
+  }

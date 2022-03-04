@@ -1,0 +1,36 @@
+.bubble-slider {
+  float: left;
+}
+
+.bubbles {
+  display: inline-block;
+}
+
+.bubble-radio-button, .bubble-radio-button-fill {
+  float: left;
+  width: 3em;
+  height: 3em;
+  background: url(../img/Bubble.png);
+  background-size: contain;
+  cursor: pointer;
+}
+
+.bubble-radio-button-fill {
+  background: url(../img/BubbleFill.png);
+  background-size: contain;
+}
+
+.decrease-bubble-button {
+  background: url(../img/ArrowButtonLeft.png);
+}
+
+.increase-bubble-button {
+  background: url(../img/ArrowButtonRight.png);
+}
+
+.decrease-bubble-button, .increase-bubble-button {
+  width: 3em;
+  height: 3em;
+  background-size: contain;
+  border: none;
+}
