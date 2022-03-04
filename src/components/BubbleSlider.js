@@ -8,11 +8,14 @@ class BubbleSlider extends React.Component {
     this.increaseBubble = this.increaseBubble.bind(this);
   }
 
+  // no-op: to be extended by sub-class
+  updateBubbleCallback() {}
+
   decreaseBubble() {
     if (this.state.selectedIdx > 0) {
       this.setState((state) => {
         return {selectedIdx: state.selectedIdx - 1}
-      });
+      }, this.updateBubbleCallback);
     }
   }
 
@@ -20,14 +23,14 @@ class BubbleSlider extends React.Component {
     if (this.state.selectedIdx < this.state.bubbleCount - 1) {
       this.setState((state) => {
         return {selectedIdx: state.selectedIdx + 1}
-      });
+      }, this.updateBubbleCallback);
     }
   }
 
   selectBubble(index) {
     this.setState((state) => {
       return {selectedIdx: index}
-    });
+    }, this.updateBubbleCallback);
   }
 
   render() {
