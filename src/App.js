@@ -3,6 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MoodSlider from './components/MoodSlider';
 import SleepSlider from './components/SleepSlider';
+import NotesTextArea from './components/NotesTextArea';
 import { Container, Row, Col } from 'react-bootstrap';
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
         </Row>
         <Row className='h-10 p-3'>
             <Col></Col>
+        </Row>
+        <Row>
+            <NotesTextArea/>
         </Row>
     </Container>
   );
