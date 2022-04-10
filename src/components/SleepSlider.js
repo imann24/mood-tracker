@@ -8,6 +8,7 @@ class SleepSlider extends BubbleSlider {
     super(props);
     this.labelClasses = ['follow-left', 'follow-middle', 'follow-right'];
     this.labelValues = ['Poor', 'Neutral', 'Great'];
+    this.handleChange = this.props.handleChange.bind(this);
     this.state = {
       bubbleCount: 3,
       selectedIdx: 1,
@@ -18,12 +19,14 @@ class SleepSlider extends BubbleSlider {
 
   updateBubbleCallback() {
     super.updateBubbleCallback();
+    const sleep = this.labelValues[this.state.selectedIdx];
     this.setState((state) => {
       return {
         labelClass: this.labelClasses[this.state.selectedIdx],
-        labelVal: this.labelValues[this.state.selectedIdx],
+        labelVal: sleep
       };
-    })
+    });
+    this.handleChange(sleep);
   }
 
   render() {
