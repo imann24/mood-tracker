@@ -12,6 +12,7 @@ class MoodSlider extends React.Component {
       value: neutralIdx,
       mood: labels[neutralIdx]
     };
+    this.handleChange = this.props.handleChange.bind(this);
   }
 
   render() {
@@ -23,6 +24,7 @@ class MoodSlider extends React.Component {
           <input type='range' min='0' max={labels.length - 1} value={value} className='mood-slider-bar' id='myRange'  onChange={v => {
               const idx = v.target.value;
               this.setState({ value: idx, mood: labels[idx] });
+              this.handleChange(labels[idx]);
             }}/>
         </div>
         <div className='mood-label'>{labels[value]}</div>

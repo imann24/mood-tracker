@@ -11,7 +11,9 @@ class BubbleSlider extends React.Component {
   // no-op: to be extended by sub-class
   updateBubbleCallback() {}
 
-  decreaseBubble() {
+  decreaseBubble(e) {
+    // need prevent default so this doesn't trigger form submissions
+    e.preventDefault();
     if (this.state.selectedIdx > 0) {
       this.setState((state) => {
         return {selectedIdx: state.selectedIdx - 1}
@@ -19,7 +21,9 @@ class BubbleSlider extends React.Component {
     }
   }
 
-  increaseBubble() {
+  increaseBubble(e) {
+    // need prevent default so this doesn't trigger form submissions
+    e.preventDefault();
     if (this.state.selectedIdx < this.state.bubbleCount - 1) {
       this.setState((state) => {
         return {selectedIdx: state.selectedIdx + 1}
