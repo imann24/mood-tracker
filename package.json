@@ -7,11 +7,16 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.5.0",
+    "connect-ensure-login": "^0.1.1",
+    "connect-pg-simple": "^7.0.0",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "express-session": "^1.17.2",
     "lodash": "^4.17.21",
+    "nodemon": "^2.0.15",
     "passport": "^0.5.2",
     "passport-google-oidc": "^0.1.0",
+    "pg": "^8.7.3",
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.2",
     "react-dom": "^16.13.1",
@@ -24,7 +29,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "node src/server/index.js"
+    "server": "nodemon src/server/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
