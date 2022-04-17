@@ -26,6 +26,7 @@ export default class App extends React.Component {
               <Row className='h-10 p-3'>
                   <Col></Col>
               </Row>
+              <a class="button google" href="login/federated/google">Sign in with Google</a>
               <GoogleLogin
                 clientId="1014513037859-19ub8dkjn0vuue51n3b9nnvqq8r87ugv.apps.googleusercontent.com"
                 buttonText="Login"

@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oidc');
@@ -7,7 +8,7 @@ const session = require('express-session')
 const pgSession = require('connect-pg-simple')(session)
 const ensureLogIn = require('connect-ensure-login').ensureLoggedIn;
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 const sessionDBaccess = new sessionPool({
   user: process.env.DB_USER || 'postgres',
@@ -48,8 +49,9 @@ passport.deserializeUser(function(user, cb) {
   });
 });
 
+app.use(express.static(path.join(__dirname, '../..', 'build')));
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.sendFile(path.join(__dirname, '../..', 'build', 'index.html'));
 })
 
 app.get('/login', function(req, res, next) {

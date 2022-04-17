@@ -25,11 +25,13 @@
     "rsuite": "^4.8.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "yarn run build && yarn server",
+    "client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "nodemon src/server/index.js"
+    "server": "nodemon src/server/index.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -45,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^7.1.0"
   }
 }
