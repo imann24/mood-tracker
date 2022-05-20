@@ -10,3 +10,12 @@ App to record and track mood over time.
 1. `yarn dev` :: runs a local copy of the client and server
 1. `yarn client` :: runs a local copy of the client app
 1. `yarn server` :: runs a local copy of the server app
+
+## Sessions Database
+```sql
+CREATE TABLE public.session (
+  sid character varying PRIMARY KEY NOT NULL,
+  sess json NOT NULL,
+  expire timestamp(6) without time zone NOT NULL
+);
+```

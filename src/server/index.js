@@ -9,6 +9,7 @@ const pgSession = require('connect-pg-simple')(session)
 const ensureLogIn = require('connect-ensure-login').ensureLoggedIn;
 const app = express();
 const port = process.env.PORT || 3001;
+const DEBUG_MODE = process.env.DEBUG_MODE || true;
 
 const sessionDBaccess = new sessionPool({
   user: process.env.DB_USER || 'postgres',
@@ -39,12 +40,18 @@ passport.use(new GoogleStrategy({
 
 passport.serializeUser(function(user, cb) {
   process.nextTick(function() {
+    if (DEBUG_MODE) {
+      console.log("user to be serialized", user);
+    }
     cb(null, { id: user.id, username: user.username, name: user.name });
   });
 });
 
 passport.deserializeUser(function(user, cb) {
   process.nextTick(function() {
+    if (DEBUG_MODE) {
+      console.log("user to be deserialized", user);
+    }
     return cb(null, user);
   });
 });
@@ -54,16 +61,17 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../..', 'build', 'index.html'));
 })
 
-app.get('/login', function(req, res, next) {
-  res.render('login');
-});
-
 app.get('/login/federated/google', passport.authenticate('google'));
 
-app.get('/oauth2/redirect/google', passport.authenticate('google', {
-  successReturnToOrRedirect: '/',
-  failureRedirect: '/'
-}));
+app.get('/oauth2/redirect/google', passport.authenticate('google',  {
+  failureRedirect: '/',
+  failureMessage: true
+}), function(req, res) {
+  if (DEBUG_MODE) {
+    console.log('Google OAuth response:', res.statusCode);
+  }
+  res.redirect('/');
+});
 
 app.post('/logout', function(req, res, next) {
   req.logout();
