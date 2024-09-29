@@ -1,5 +1,5 @@
 import React, { createRef } from 'react';
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Form, Button, Row, Col, Spinner } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import './MoodForm.css'
@@ -18,7 +18,8 @@ export default class MoodForm extends React.Component {
     this.state = {
       mood: 'Neutral',
       sleep: 'Neutral',
-      notes: ''
+      notes: '',
+      submitting: false,
     };
     this.moodSliderRef = createRef();
     this.sleepSliderRef = createRef();
@@ -38,6 +39,7 @@ export default class MoodForm extends React.Component {
 
   async handleSubmit(e) {
     e.preventDefault();
+    this.setState({submitting: true});
     const { error } = await supabase
       .from('mood_entries')
       .insert([
@@ -56,7 +58,8 @@ export default class MoodForm extends React.Component {
       this.setState({
         mood: 'Neutral',
         sleep: 'Neutral',
-        notes: ''
+        notes: '',
+        submitting: false,
       });
       this.moodSliderRef?.current?.resetState();
       this.sleepSliderRef?.current?.resetState();
@@ -101,9 +104,10 @@ export default class MoodForm extends React.Component {
               variant='primary'
               type='submit'
               className='submit-button'
-              disabled={!this.props.user}
+              disabled={!this.props.user || this.state.submitting}
             >
               Record
+              {this.state.submitting && <Spinner animation='border' size='sm' />}
             </Button>
           </Row>
         </Form>
