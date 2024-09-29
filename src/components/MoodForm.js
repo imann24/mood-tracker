@@ -4,10 +4,11 @@ import './MoodForm.css'
 import MoodSlider from './MoodSlider';
 import SleepSlider from './SleepSlider';
 import NotesTextArea from './NotesTextArea';
+import supabase from '../lib/supabase';
 
 export default class MoodForm extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props)
     this.handleMoodChange = this.handleMoodChange.bind(this);
     this.handleSleepChange = this.handleSleepChange.bind(this);
     this.handleNotesChange = this.handleNotesChange.bind(this);
@@ -31,9 +32,21 @@ export default class MoodForm extends React.Component {
     this.setState({notes: e.target.value});
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
+    const { error } = await supabase
+      .from('mood_entries')
+      .insert([
+        {
+          user_id: this.props.user.id,
+          mood: this.state.mood,
+          sleep: this.state.sleep,
+          notes: this.state.notes
+        }
+      ]);
+    if (error) {
+      console.error('Error saving mood entry:', error.message)
+    }
   }
 
   render() {
@@ -59,7 +72,12 @@ export default class MoodForm extends React.Component {
             <Col></Col>
         </Row>
         <Row>
-          <Button variant='primary' type='submit' className='submit-button'>
+          <Button
+            variant='primary'
+            type='submit'
+            className='submit-button'
+            disabled={!this.props.user}
+          >
             Record
           </Button>
         </Row>
