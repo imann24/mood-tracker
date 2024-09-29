@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button } from 'react-bootstrap'
 import supabase from '../lib/supabase'
 
 export default function GoogleSignIn({user}) {
@@ -12,11 +13,21 @@ export default function GoogleSignIn({user}) {
     }
   }
 
+  const elementStyle = {
+    marginLeft: '-1rem',
+    marginTop: '1rem',
+  }
+
   if (user) {
-    return <p>Signed in as {user.email}</p>
+    return <p style={elementStyle}>Signed in as {user.email}</p>
   }
 
   return (
-    <button onClick={handleGoogleSignIn}>Sign in with Google</button>
+    <Button
+      style={elementStyle}
+      onClick={handleGoogleSignIn}
+    >
+      Sign in with Google
+    </Button>
   )
 }
