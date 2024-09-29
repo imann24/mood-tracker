@@ -7,7 +7,7 @@ export default function GoogleSignIn() {
   useEffect(() => {
     async function checkUser() {
       const { data: { session } } = await supabase.auth.getSession()
-      if (session.user) {
+      if (session?.user) {
         setUser(session.user)
       }
     }
