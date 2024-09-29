@@ -29,6 +29,16 @@ class SleepSlider extends BubbleSlider {
     this.handleChange(sleep);
   }
 
+  resetState() {
+    const sleep = this.labelValues[1];
+    this.setState({
+      selectedIdx: 1,
+      labelClass: this.labelClasses[1],
+      labelVal: sleep,
+    }); 
+    this.handleChange(sleep);
+  }
+
   render() {
     const bubbles = super.render();
     return (

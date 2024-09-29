@@ -13,7 +13,13 @@ class NotesTextArea extends React.Component {
     return (
       <div>
         <h1>Notes</h1>
-        <Form.Control id='notes-text' as='textarea' rows={5} onChange={this.handleChange}/>
+        <Form.Control
+          id='notes-text'
+          as='textarea'
+          rows={5}
+          onChange={this.handleChange}
+          value={this.props.value}
+        />
       </div>
     )
   }

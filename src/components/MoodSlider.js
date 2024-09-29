@@ -15,6 +15,14 @@ class MoodSlider extends React.Component {
     this.handleChange = this.props.handleChange.bind(this);
   }
 
+  resetState = () => {
+    const neutralIdx = Math.floor(labels.length / 2);
+    this.setState({
+      value: neutralIdx,
+      mood: labels[neutralIdx]
+    });
+  }
+
   render() {
     const { value } = this.state;
     return (

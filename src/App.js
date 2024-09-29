@@ -1,4 +1,4 @@
-import dotenv from 'dotenv'
+// import dotenv from 'dotenv'
 import React, { useEffect, useState} from 'react';
 import { Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,7 +7,7 @@ import MoodForm from './components/MoodForm';
 import GoogleSignIn from './components/GoogleSignIn';
 import supabase from './lib/supabase';
 
-dotenv.config()
+// dotenv.config()
 
 export default function App() {
   const [user, setUser] = useState(null)

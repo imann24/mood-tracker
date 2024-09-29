@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 import './MoodForm.css'
 import MoodSlider from './MoodSlider';
 import SleepSlider from './SleepSlider';
@@ -18,6 +20,8 @@ export default class MoodForm extends React.Component {
       sleep: 'Neutral',
       notes: ''
     };
+    this.moodSliderRef = createRef();
+    this.sleepSliderRef = createRef();
   }
 
   handleMoodChange(mood) {
@@ -46,42 +50,64 @@ export default class MoodForm extends React.Component {
       ]);
     if (error) {
       console.error('Error saving mood entry:', error.message)
+      toast.error('Error saving mood entry with error:', error.message);
+    } else {
+      toast.success('Mood entry saved successfully!');
+      this.setState({
+        mood: 'Neutral',
+        sleep: 'Neutral',
+        notes: ''
+      });
+      this.moodSliderRef?.current?.resetState();
+      this.sleepSliderRef?.current?.resetState();
     }
   }
 
   render() {
     return(
-      <Form onSubmit={this.handleSubmit}>
-        <Row className='h-10 p-3'>
-            <Col></Col>
-        </Row>
-        <Row>
-            <MoodSlider handleChange={this.handleMoodChange}/>
-        </Row>
-        <Row className='mt-5'></Row>
-        <Row>
-            <SleepSlider handleChange={this.handleSleepChange}/>
-        </Row>
-        <Row className='h-10 p-3'>
-            <Col></Col>
-        </Row>
-        <Row>
-            <NotesTextArea handleChange={this.handleNotesChange}/>
-        </Row>
-        <Row className='h-10 p-3'>
-            <Col></Col>
-        </Row>
-        <Row>
-          <Button
-            variant='primary'
-            type='submit'
-            className='submit-button'
-            disabled={!this.props.user}
-          >
-            Record
-          </Button>
-        </Row>
-      </Form>
+      <>
+        <ToastContainer />
+        <Form onSubmit={this.handleSubmit}>
+          <Row className='h-10 p-3'>
+              <Col></Col>
+          </Row>
+          <Row>
+              <MoodSlider
+                handleChange={this.handleMoodChange}
+                ref={this.moodSliderRef}
+              />
+          </Row>
+          <Row className='mt-5'></Row>
+          <Row>
+              <SleepSlider
+                handleChange={this.handleSleepChange}
+                ref={this.sleepSliderRef}
+              />
+          </Row>
+          <Row className='h-10 p-3'>
+              <Col></Col>
+          </Row>
+          <Row>
+              <NotesTextArea
+                handleChange={this.handleNotesChange}
+                value={this.state.notes}
+              />
+          </Row>
+          <Row className='h-10 p-3'>
+              <Col></Col>
+          </Row>
+          <Row>
+            <Button
+              variant='primary'
+              type='submit'
+              className='submit-button'
+              disabled={!this.props.user}
+            >
+              Record
+            </Button>
+          </Row>
+        </Form>
+      </>
     )
   }
 }
